@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Landing from "./containers/Landing";
+import Footer from "./containers/Footer";
 
 const BodyContainer = styled.div`
   width: 600px;
@@ -100,6 +101,7 @@ function App() {
           <BodyContainer>
             <Navbar />
             <Landing />
+            <Footer />
           </BodyContainer>
         </>
       )}
