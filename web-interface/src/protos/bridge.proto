@@ -1,0 +1,12 @@
+syntax = "proto3";
+package rosenlabs.xchain.xchain;
+
+option go_package = "github.com/rosen-labs/xchain/x/xchain/types";
+
+message MsgBridgeRequest {
+  string reciever = 1;
+  uint64 amount = 2;  
+  uint64 fee = 3; 
+  uint32 destChainId = 4;
+  string signer = 5;
+}

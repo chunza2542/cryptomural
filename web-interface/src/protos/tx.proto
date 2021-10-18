@@ -1,0 +1,29 @@
+syntax = "proto3";
+package rosenlabs.xchain.xchain;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "github.com/rosen-labs/xchain/x/xchain/types";
+
+// Msg defines the Msg service.
+service Msg {
+    // this line is used by starport scaffolding # proto/tx/rpc
+  rpc SendMsgMintRequest(MsgSendMsgMintRequest) returns (MsgSendMsgMintRequestResponse);
+}
+
+// this line is used by starport scaffolding # proto/tx/message
+message MsgSendMsgMintRequest {
+  string sender = 1;
+  string port = 2;
+  string channelID = 3;
+  uint64 timeoutTimestamp = 4;
+  string reciever = 5;
+  uint64 amount = 6;
+  uint64 fee = 7;
+  uint32 tokenId = 8;
+  uint32 srcChainId = 9;
+  uint32 destChainId = 10;
+}
+
+message MsgSendMsgMintRequestResponse {
+}
