@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Example from "./Example";
 
 const Container = styled.div`
   margin-top: 36px;
@@ -38,6 +39,7 @@ const Landing = () => {
         <a>Contract</a>
         <a>Twitter</a>
       </LinkContainer>
+      <Example />
     </Container>
   );
 };
