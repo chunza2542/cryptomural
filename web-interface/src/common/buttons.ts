@@ -12,6 +12,7 @@ const ButtonStyle = styled.button`
   font-size: 1rem;
   font-weight: 600;
   transition: 0.25s;
+  border-radius: 5px;
   cursor: pointer;
 `;
 
@@ -38,10 +39,10 @@ export const DisabledButton = styled(ButtonStyle)`
 `;
 
 export const PrimaryButton = styled(ButtonStyle)`
-  background: ${colors.blue};
+  background: black;
 
   &:hover {
-    background: ${withOpacity(blueTemplate, 0.9)};
+    background: #111;
   }
 `;
 export const PrimaryBlockButton = styled(PrimaryButton)`
@@ -50,7 +51,6 @@ export const PrimaryBlockButton = styled(PrimaryButton)`
   padding: 12px;
   display: flex;
   justify-content: center;
-  border-radius: 16px;
 
   & svg {
     transform: scale(1.5);

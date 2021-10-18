@@ -30,15 +30,14 @@ const MobileNotSupportScreen = styled.div`
   padding: 15px;
   text-align: center;
 
-  color: white;
-
   & > h1 {
     margin: 0;
     font-size: 1.2rem;
+    color: white;
   }
   & > p {
-    color: #555;
     font-size: 1rem;
+    color: #aaa;
   }
 `;
 const EnterSite = styled.div`
@@ -53,8 +52,8 @@ const IconBar = styled.div`
   margin-top: 30px;
 
   & > a {
-    color: #777;
     margin: 0 10px;
+    color: #aaa;
   }
 `;
 
@@ -66,10 +65,10 @@ function App() {
     <ContextProvider>
       {!isEnter && screenWidth <= 550 && (
         <MobileNotSupportScreen>
-          <Emoji>🌉</Emoji>
-          <h1>Welcome to Rosen Bridge</h1>
+          <Emoji>🗿</Emoji>
+          <h1>Welcome to CryptoMural</h1>
           <p>
-            Hi 🖐 Welcome to Rosen Bridge! I just want to tell you that this
+            Hi, Welcome to CryptoMural!!. We just want to tell you that this
             site doesn't support mobile devices yet. for a better experience,
             please visit on your desktop
           </p>
@@ -80,14 +79,14 @@ function App() {
           </EnterSite>
           <IconBar>
             <a
-              href="https://twitter.com/chunza2542"
+              href="https://github.com/chunza2542/cryptomural"
               target="_blank"
               rel="noreferrer"
             >
               <FontAwesomeIcon icon={faTwitter} />
             </a>
             <a
-              href="https://github.com/rosen-labs"
+              href="https://github.com/chunza2542"
               target="_blank"
               rel="noreferrer"
             >
