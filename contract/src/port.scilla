@@ -1,0 +1,38 @@
+scilla_version 0
+
+(* let rand = fun (f: Int32, t: Int32) => f
+let fullRandom = fun (deg: Int32) => rand 10 deg *)
+
+(* function modulo(i, j, deg) {
+    return  Math.floor(j/width*10)*deg
+}
+
+function overDegree(i,j, deg) {
+    return  (i+j)/(height+width)*deg
+}
+
+function dist(i, j, ioff, joff, deg) {
+    return  (Math.abs(ioff-i) + Math.abs(joff-j))/(height+width)*deg
+}
+
+function spiral(i, j, ioff, joff, deg) {
+    return Math.atan2(ioff - i, joff - j)*180/PI - (1 - (Math.abs(ioff-i) + Math.abs(joff-j))/100)*deg
+}  *)
+
+
+contract Test ()
+    (* field PI: Int32 = Int32 314  (*314/100 => 3.14*)
+    (* field height: Int32 = Int32 50
+    (* field width: Int32 = Int32 150
+    (* field scale: Int32 = Int32 10
+    (* field lineLength: Int32 = Int32 width/2
+    (* field lineSize: Int32 = Int32 1
+    (* field startLineSampling: Int32 = Int32 5
+    (* field startPointRandom: Int32 = Int32 5 (*5/10 => 0.5*)
+
+    transition Test()
+        event {_value: ""}
+    end
+    
+    
+end

@@ -1,0 +1,36 @@
+scilla_version 0
+
+import IntUtils
+
+library CryptoMural
+
+let one_msg =
+  fun (msg: Message) =>
+  let nil_msg = Nil {Message} in
+  Cons {Message} msg nil_msg
+
+let rand = 
+  fun (from: Int32) =>
+  fun (to: Int32) => 
+    builtin add from to 
+
+contract CryptoMural ()
+
+field PI: Int32 = Int32 314  (*314/100 => 3.14*)
+field height: Int32 = Int32 50
+field width: Int32 = Int32 150
+field scale: Int32 = Int32 10
+field lineLength: Int32 = Int32 width/2
+field lineSize: Int32 = Int32 1
+field startLineSampling: Int32 = Int32 5
+field startPointRandom: Int32 = Int32 5 (*5/10 => 0.5*)
+
+transition addMember()
+  a = Int32 1;
+  b = Int32 3;
+  r = rand a b;
+  msg = {_tag: ""; _recipient: _sender; _amount: Uint128 0; value: r};
+  msgs = one_msg msg;
+  send msgs
+
+end
