@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root" style="width: 1500px; height:500px; background-color: gray;"></div>
+    <script>
+        const PI = 3.14
+        const height = 50
+        const width = 150
+        const scale = 10
+        const lineLength = width/2
+        const lineSize = 1
+        const startLineSampling = 5
+        const startPointRandom = 0.5
+        
+        let gcount = 0
+        function fullRandom(deg) {
+            return  Math.random()*deg
+        }
+
+        function modulo(i, j, deg) {
+            return  Math.floor(j/width*10)*deg
+        }
+
+        function overDegree(i,j, deg) {
+            return  (i+j)/(height+width)*deg
+        }
+
+        function dist(i, j, ioff, joff, deg) {
+            return  (Math.abs(ioff-i) + Math.abs(joff-j))/(height+width)*deg
+        }
+        
+        function spiral(i, j, ioff, joff, deg) {
+            return Math.atan2(ioff - i, joff - j)*180/PI - (1 - (Math.abs(ioff-i) + Math.abs(joff-j))/100)*deg
+        }
+
+        function getAngle(i, j) {
+            gcount += 1
+            return spiral(i, j, 25, 75, 100)
+        }
+
+        
+        function getLine(i, j, fields) {
+            let path = `M ${j} ${i} `
+            let x = j
+            let y = i
+            for (let index = 0; index < lineLength; index++) {
+                const indexJ = Math.floor(x)
+                const indexI =  Math.floor(y)
+                gcount += 1
+                if (indexJ >= width || indexI >= height) 
+                    break
+                
+                const angle = fields[indexI][indexJ]
+                const yOffset = Math.sin(angle/180*PI)*lineSize
+                const xOffset = Math.cos(angle/180*PI)*lineSize
+                x = Math.abs(x + xOffset)
+                y = Math.abs(y + yOffset)
+                path += `L ${x} ${y} `
+            }
+            return `<path d="${path}" fill="none" style="stroke:rgb(0,0,0);stroke-width:0.1"/>`
+        }
+        
+        //======== SET UP =========//
+        let fields = new Array(height).fill(0)
+        for (let index = 0; index < height; index++) {
+            fields[index] = new Array(width).fill(0)
+        }
+    
+        //======== SET DIRECT =====//
+        for (let i = 0; i < fields.length; i++) { // row
+            for (let j = 0; j < fields[i].length; j++) { // colum
+                fields[i][j] = getAngle(i,j )
+            }
+        }
+
+        //======== DRAW ======//
+        let svg = `<svg height="${height*scale}px" width="${width*scale}px" viewBox="0 0 ${width} ${height}">`
+            for (let i = 0; i < height; i+=startLineSampling) { // row
+                for (let j = 0; j < width; j+= startLineSampling) { // colum 
+                    if (Math.random()*100 < startPointRandom * 100) {
+                        svg += getLine(i, j, fields)
+                    }
+                }
+            }
+        svg += `</svg>`
+    
+        //======== SET ELEMENT ====//
+        let elem = document.getElementById("root")
+        console.log(elem)
+        console.log(gcount);
+        elem.innerHTML = svg
+    </script>
+</body>
+</html>

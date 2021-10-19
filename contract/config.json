@@ -1,0 +1,7 @@
+{
+    "privateKey" : "7980d331792e11b286d689e696e591dac39f5a6a3a39b06dc78b3b88e93c091b",
+    "network": "https://dev-api.zilliqa.com",
+    "src": "src/crypto_mural.scilla",
+    "chainId" : 333,
+    "msgVersion" : 1
+}

@@ -1,0 +1,14 @@
+[
+    {
+        "private_key": "7980d331792e11b286d689e696e591dac39f5a6a3a39b06dc78b3b88e93c091b",
+        "public_key": "036c4cea3e4b5056c44f21701cf22bac4cf96be4bc81ad3bd51ae5d0608876d7bd",
+        "address": "4c19be63c0fb54b143968ea71d917cdf383eb82d",
+        "bech_32_address": "zil1fsvmuc7qld2tzsuk36n3mytumuurawpdehsgmf"
+    },
+    {
+        "private_key": "1776a38a3df87579439dd760149fbed08382e8a8c174c066f9e3911820b75ba4",
+        "public_key": "023a94f59d3719e9f247b16227c0f2e1d462005309acff97f6ac54b294caa4cd8a",
+        "address": "39a7261e8286c881e97a802a075270239ab7cb01",
+        "bech_32_address": "zil18xnjv85zsmygr6t6sq4qw5nsywdt0jcp0yzewe"
+    }
+]
