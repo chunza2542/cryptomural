@@ -23,13 +23,8 @@ export const formatWalletAddress = (walletInfo: WalletInfo | null): string => {
 };
 export const formatAddress = (address: string | null | undefined): string => {
   if (!address) return "NO ADDRESS";
-  if (address.includes("cosmos")) {
-    const length = address.length;
-    return address.substr(0, 13) + "..." + address.substr(length - 6, 6);
-  } else {
-    const length = address.length;
-    return address.substr(0, 6) + "..." + address.substr(length - 4, 4);
-  }
+  const length = address.length;
+  return address.substr(0, 6) + "..." + address.substr(length - 6, 6);
 };
 
 export const getTokenLogoURL = (address: string): string => {
