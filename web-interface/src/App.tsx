@@ -11,6 +11,8 @@ import Landing from "./containers/Landing";
 import Footer from "./containers/Footer";
 import Mint from "./containers/Mint";
 import SuccessMintModal from "./containers/SuccessMintModal";
+import { useAppContext } from "./context/app/appContext";
+import MyCollection from "./containers/MyCollection";
 
 const BodyContainer = styled.div`
   width: 600px;
@@ -54,6 +56,22 @@ const IconBar = styled.div`
     color: #aaa;
   }
 `;
+
+function Content() {
+  const { state } = useAppContext();
+
+  return (
+    <>
+      {!state.isOpenMyCollectionPage && (
+        <>
+          <Landing />
+          <Mint />
+        </>
+      )}
+      {state.isOpenMyCollectionPage && <MyCollection />}
+    </>
+  );
+}
 
 function App() {
   const screenWidth = useWindowWidth();
@@ -102,8 +120,7 @@ function App() {
 
           <BodyContainer>
             <Navbar />
-            <Landing />
-            <Mint />
+            <Content />
             <Footer />
           </BodyContainer>
         </>
