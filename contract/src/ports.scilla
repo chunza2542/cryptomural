@@ -4,15 +4,25 @@ import IntUtils
 
 library CryptoMural
 
+let int32_one = Int32 1
+let int32_zero = Int32 0
+
 let one_msg =
   fun (msg: Message) =>
   let nil_msg = Nil {Message} in
   Cons {Message} msg nil_msg
 
 let rand = 
-  fun (from: Int32) =>
-  fun (to: Int32) => 
-    builtin add from to 
+  fun (max: Int32) => max
+  
+let init_row = fun (cols: Int32) => fun (rows: Map Int32 Int32) =>
+  let newRows = builtin put rows cols int32_zero in
+  let newCols = builtin sub cols int32_one in
+  match cols with
+    | _ => 
+      newRows
+  end
+
 
 contract CryptoMural ()
 
@@ -26,10 +36,14 @@ field startLineSampling: Int32 = Int32 5
 field startPointRandom: Int32 = Int32 5 (*5/10 => 0.5*)
 
 transition addMember()
-  a = Int32 1;
-  b = Int32 3;
-  r = rand a b;
-  msg = {_tag: ""; _recipient: _sender; _amount: Uint128 0; value: r};
+
+  x = let cols = Int32 150 in
+  let rows = Emp Int32 Int32 in 
+  init_row cols rows;
+  
+  v = builtin get x int32_zero;
+  
+  msg = {_tag: ""; _recipient: _sender; _amount: Uint128 0; value: v};
   msgs = one_msg msg;
   send msgs
 

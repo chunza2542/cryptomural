@@ -7,94 +7,112 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="root" style="width: 1500px; height:500px; background-color: gray;"></div>
+    <img id="root" style="width: 1500px; height:500px;"></div>
     <script>
         const PI = 3.14
         const height = 50
         const width = 150
-        const scale = 10
-        const lineLength = width/2
-        const lineSize = 1
-        const startLineSampling = 5
-        const startPointRandom = 0.5
+        const methodList = [fullRandom, modulo, overDegree, dist,spiral]
         
-        let gcount = 0
-        function fullRandom(deg) {
+        function fullRandom({deg}) {
             return  Math.random()*deg
         }
 
-        function modulo(i, j, deg) {
+        function modulo({i, j, deg}) {
             return  Math.floor(j/width*10)*deg
         }
 
-        function overDegree(i,j, deg) {
+        function overDegree({i,j, deg}) {
             return  (i+j)/(height+width)*deg
         }
 
-        function dist(i, j, ioff, joff, deg) {
+        function dist({i, j, ioff, joff, deg}) {
             return  (Math.abs(ioff-i) + Math.abs(joff-j))/(height+width)*deg
         }
         
-        function spiral(i, j, ioff, joff, deg) {
+        function spiral({i, j, ioff, joff, deg}) {
             return Math.atan2(ioff - i, joff - j)*180/PI - (1 - (Math.abs(ioff-i) + Math.abs(joff-j))/100)*deg
         }
 
         function getAngle(i, j) {
-            gcount += 1
             return spiral(i, j, 25, 75, 100)
         }
 
         
-        function getLine(i, j, fields) {
+        function getLine(i, j, fields, lineStepSize, lineLength) {
             let path = `M ${j} ${i} `
             let x = j
             let y = i
             for (let index = 0; index < lineLength; index++) {
                 const indexJ = Math.floor(x)
                 const indexI =  Math.floor(y)
-                gcount += 1
                 if (indexJ >= width || indexI >= height) 
                     break
                 
                 const angle = fields[indexI][indexJ]
-                const yOffset = Math.sin(angle/180*PI)*lineSize
-                const xOffset = Math.cos(angle/180*PI)*lineSize
+                const yOffset = Math.sin(angle/180*PI)*lineStepSize
+                const xOffset = Math.cos(angle/180*PI)*lineStepSize
                 x = Math.abs(x + xOffset)
                 y = Math.abs(y + yOffset)
                 path += `L ${x} ${y} `
             }
             return `<path d="${path}" fill="none" style="stroke:rgb(0,0,0);stroke-width:0.1"/>`
         }
-        
-        //======== SET UP =========//
-        let fields = new Array(height).fill(0)
-        for (let index = 0; index < height; index++) {
-            fields[index] = new Array(width).fill(0)
-        }
-    
-        //======== SET DIRECT =====//
-        for (let i = 0; i < fields.length; i++) { // row
-            for (let j = 0; j < fields[i].length; j++) { // colum
-                fields[i][j] = getAngle(i,j )
-            }
+
+        function encodeSVGtoURL (data) {
+            const symbols = /[\r\n%#()<>?[\\\]^`{|}]/g;
+            data = data.replace(/"/g, `'`);
+            data = data.replace(/>\s{1,}</g, `><`);
+            data = data.replace(/\s{2,}/g, ` `);
+            return "data:image/svg+xml,"+data.replace(symbols, encodeURIComponent);
         }
 
-        //======== DRAW ======//
-        let svg = `<svg height="${height*scale}px" width="${width*scale}px" viewBox="0 0 ${width} ${height}">`
-            for (let i = 0; i < height; i+=startLineSampling) { // row
-                for (let j = 0; j < width; j+= startLineSampling) { // colum 
-                    if (Math.random()*100 < startPointRandom * 100) {
-                        svg += getLine(i, j, fields)
-                    }
+        function generate({lineLength, lineStepSize, startPointRandom, startLineSampling, yOffset, xOffset, deg, method}) {
+            
+            //======== SET UP =========//
+            let fields = new Array(height).fill(0)
+            for (let index = 0; index < height; index++) {
+                fields[index] = new Array(width).fill(0)
+            }
+        
+            //======== SET DIRECT =====//
+            for (let i = 0; i < fields.length; i++) { // row
+                for (let j = 0; j < fields[i].length; j++) { // colum
+                    
+                    fields[i][j] = methodList[method]({i, j, ioff:yOffset, joff:xOffset, deg})
                 }
             }
-        svg += `</svg>`
     
+            //======== DRAW ======//
+            let svg = `<svg xmlns='http://www.w3.org/2000/svg' height="${height}px" width="${width}px" viewBox="0 0 ${width} ${height}">`
+                for (let i = 0; i < height; i+=startLineSampling) { // row
+                    for (let j = 0; j < width; j+= startLineSampling) { // colum 
+                        if (Math.random()*100 < startPointRandom * 100) {
+                            svg += getLine(i, j, fields, lineStepSize, lineLength)
+                        }
+                    }
+                }
+            svg += `</svg>`
+            return svg
+        }
+    
+        const parameter = {
+            startLineSampling: 5,
+            startPointRandom: 0.5,
+            xOffset: 75, 
+            yOffset: 25, 
+            deg: 90,
+            method: 4, // 
+            lineStepSize: 1,
+            lineLength: 75,
+        }
+
         //======== SET ELEMENT ====//
+        let url = encodeSVGtoURL(generate(parameter))
+        console.log();
+        
         let elem = document.getElementById("root")
-        console.log(elem)
-        console.log(gcount);
-        elem.innerHTML = svg
+        elem.setAttribute("src", url )
     </script>
 </body>
 </html>
