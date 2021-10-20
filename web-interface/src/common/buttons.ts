@@ -1,10 +1,4 @@
 import styled from "styled-components";
-import {
-  blueTemplate,
-  colors,
-  darkBlueTemplate,
-  withOpacity,
-} from "../utils/styled";
 
 const ButtonStyle = styled.button`
   border: 0;
@@ -13,6 +7,22 @@ const ButtonStyle = styled.button`
   transition: 0.25s;
   border-radius: 5px;
   cursor: pointer;
+`;
+export const DisabledButton = styled(ButtonStyle)`
+  color: #aaa;
+  font-size: 1.4rem;
+  background: transparent;
+  cursor: not-allowed;
+`;
+export const OutlinedButton = styled(ButtonStyle)`
+  color: black;
+  background: transparent;
+  border: 1px solid black;
+  padding: 6px 12px;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 export const LinkButton = styled(ButtonStyle)`
   color: white;

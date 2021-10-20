@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin-top: 36px;
+  margin-top: 60px;
   display: block;
   color: #aaa;
   text-align: center;
@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <Container>
       <div style={{ height: 12 * 6 }}>
-        Crafted with ♥ by{" "}
+        2021 CryptoMural. Crafted with ♥ by{" "}
         <a target="_blank" href="https://twitter.com/chunza2542">
           @chunza2542
         </a>{" "}
@@ -24,10 +24,7 @@ const Footer = () => {
         <a target="_blank" href="https://twitter.com/tauhoo_ice">
           @tauhoo_ice
         </a>
-        , This website is{" "}
-        <a href="https://github.com/chunza2542/cryptomural" target="_blank">
-          open-source
-        </a>
+        .
       </div>
     </Container>
   );
