@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { DisabledButton, LinkButton } from "../common/buttons";
+import { useAppContext } from "../context/app/appContext";
+import { AppActionType } from "../context/app/appReducer";
 
 const Container = styled.div`
   margin-top: 36px;
@@ -11,6 +13,7 @@ const Container = styled.div`
 const Mint = () => {
   const [isConnect, setIsConnect] = useState(false);
   const [currentBalance, setCurrentBalance] = useState(0);
+  const { dispatch } = useAppContext();
 
   useEffect(() => {
     setTimeout(async () => {
@@ -52,7 +55,16 @@ const Mint = () => {
 
           {window.zilPay?.wallet?.net === "testnet" && (
             <>
-              <LinkButton>Mint Your CryptoMural NFT</LinkButton>
+              <LinkButton
+                onClick={() => {
+                  dispatch({
+                    type: AppActionType.SET_IS_MINT_SUCCESS,
+                    payload: true,
+                  });
+                }}
+              >
+                Mint Your CryptoMural NFT
+              </LinkButton>
               {/* TODO: Update Estimate Gas */}
               <div>
                 Your Balance: {currentBalance.toFixed(2)} ZIL, Estimated Mint

@@ -3,46 +3,21 @@ import { WalletInfo } from "../../types/wallet";
 import { AppContextState } from "./appContext";
 
 export enum AppActionType {
-  SET_WALLET_INFO = "SET_WALLET_INFO",
-  SET_FROM_CHAIN = "SET_FROM_CHAIN",
-  SET_TO_CHAIN = "SET_TO_CHAIN",
-  SET_TOKEN = "SET_TOKEN",
+  SET_IS_MINT_SUCCESS = "SET_IS_MINT_SUCCESS",
 }
 
-export type AppAction =
-  | {
-      type: AppActionType.SET_WALLET_INFO;
-      payload: WalletInfo | null;
-    }
-  | {
-      type: AppActionType.SET_FROM_CHAIN;
-      payload: SelectedChain | null;
-    }
-  | {
-      type: AppActionType.SET_TO_CHAIN;
-      payload: SelectedChain | null;
-    }
-  | {
-      type: AppActionType.SET_TOKEN;
-      payload: SelectedToken | null;
-    };
+export type AppAction = {
+  type: AppActionType.SET_IS_MINT_SUCCESS;
+  payload: boolean;
+};
 
 export const appReducer = (
   state: AppContextState,
   action: AppAction
 ): AppContextState => {
   switch (action.type) {
-    case AppActionType.SET_WALLET_INFO: {
-      return { ...state, walletInfo: action.payload };
-    }
-    case AppActionType.SET_FROM_CHAIN: {
-      return { ...state, selectedFromChain: action.payload };
-    }
-    case AppActionType.SET_TO_CHAIN: {
-      return { ...state, selectedToChain: action.payload };
-    }
-    case AppActionType.SET_TOKEN: {
-      return { ...state, selectedToken: action.payload };
+    case AppActionType.SET_IS_MINT_SUCCESS: {
+      return { ...state, isMintSuccess: action.payload };
     }
   }
 };

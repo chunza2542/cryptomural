@@ -10,6 +10,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Landing from "./containers/Landing";
 import Footer from "./containers/Footer";
 import Mint from "./containers/Mint";
+import SuccessMintModal from "./containers/SuccessMintModal";
 
 const BodyContainer = styled.div`
   width: 600px;
@@ -97,7 +98,7 @@ function App() {
       )}
       {(isEnter || screenWidth > 620) && (
         <>
-          {/* <SelectChainModal /> */}
+          <SuccessMintModal />
 
           <BodyContainer>
             <Navbar />

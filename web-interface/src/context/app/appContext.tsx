@@ -4,16 +4,10 @@ import { WalletInfo } from "../../types/wallet";
 import { AppAction, appReducer } from "./appReducer";
 
 export interface AppContextState {
-  walletInfo: WalletInfo | null;
-  selectedToken: SelectedToken | null;
-  selectedFromChain: SelectedChain | null;
-  selectedToChain: SelectedChain | null;
+  isMintSuccess: boolean;
 }
 const initialState: AppContextState = {
-  walletInfo: null,
-  selectedFromChain: null,
-  selectedToChain: null,
-  selectedToken: null,
+  isMintSuccess: false,
 };
 
 interface AppContextProviderProps {

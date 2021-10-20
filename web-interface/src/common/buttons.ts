@@ -14,6 +14,16 @@ export const DisabledButton = styled(ButtonStyle)`
   background: transparent;
   cursor: not-allowed;
 `;
+export const OutlinedButton = styled(ButtonStyle)`
+  color: black;
+  background: transparent;
+  border: 1px solid black;
+  padding: 6px 12px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 export const LinkButton = styled(ButtonStyle)`
   color: white;
   font-size: 1.4rem;
