@@ -45,7 +45,6 @@ const Container = styled.div`
   & h2 {
     text-align: center;
     margin: 0;
-    margin-bottom: 12px;
     font-size: 2rem;
   }
   & p {
@@ -58,7 +57,7 @@ const Padding = styled.div`
   padding: 0 12px;
 `;
 const ButtonGroup = styled.div`
-  padding: 40px 12px;
+  padding: 36px 12px;
   text-align: center;
 
   & button {
@@ -96,7 +95,7 @@ const SuccessMintModal = () => {
           </Padding>
           <img src="https://pbs.twimg.com/profile_banners/734228556910186498/1627112708/600x200" />
           <ButtonGroup>
-            <OutlinedButton>View Contract</OutlinedButton>
+            <OutlinedButton>View on Explorer</OutlinedButton>
             <OutlinedButton>Download</OutlinedButton>
             <OutlinedButton>Share on Twitter</OutlinedButton>
           </ButtonGroup>
