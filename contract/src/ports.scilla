@@ -16,11 +16,11 @@ let rand =
 
 contract CryptoMural ()
 
-field PI: Int32 = Int32 314  (*314/100 => 3.14*)
+field pi: Int32 = Int32 314  (*314/100 => 3.14*)
 field height: Int32 = Int32 50
 field width: Int32 = Int32 150
 field scale: Int32 = Int32 10
-field lineLength: Int32 = Int32 width/2
+field lineLength: Int32 = Int32 75
 field lineSize: Int32 = Int32 1
 field startLineSampling: Int32 = Int32 5
 field startPointRandom: Int32 = Int32 5 (*5/10 => 0.5*)
