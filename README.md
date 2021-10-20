@@ -1,5 +1,7 @@
 # 🗿 CryptoMural
-CryptoMural is an NFT generative art for your Twitter header using Flow Field pathfinding algorithm on Zilliqa blockchain
+CryptoMural is an NFT generative art for your Twitter header using Flow Field pathfinding algorithm on Zilliqa blockchain.
+
+[Report a bug, request a feature or provide a feedback](https://github.com/chunza2542/cryptomural/issues)
 
 ## How it works
 
