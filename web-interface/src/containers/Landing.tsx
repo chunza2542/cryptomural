@@ -30,9 +30,9 @@ const Landing = () => {
     <Container>
       <Heading>What is CryptoMural?</Heading>
       <p>
-        CryptoMural is an “on-chain” generative art for your Twitter header
-        powered by Zilliqa blockchain. All the arts are generated using the Flow
-        Field pathfinding algorithm.
+        CryptoMural is an NFT generative art for your Twitter header on Zilliqa
+        blockchain. All the arts are generated using the Flow Field pathfinding
+        algorithm.
       </p>
       <LinkContainer>
         <a>Mintable</a>
