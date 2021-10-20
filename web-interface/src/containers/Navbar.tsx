@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { formatAddress } from "../utils/helper";
+import { useAppContext } from "../context/app/appContext";
+import { AppActionType } from "../context/app/appReducer";
 
 const NavbarContainer = styled.div`
   display: flex;
@@ -41,6 +43,7 @@ declare global {
 
 const Navbar = () => {
   const [isConnect, setIsConnect] = useState(false);
+  const { dispatch } = useAppContext();
 
   useEffect(() => {
     setTimeout(() => {
@@ -61,7 +64,16 @@ const Navbar = () => {
 
   return (
     <NavbarContainer>
-      <Logo>CryptoMural</Logo>
+      <Logo
+        onClick={() => {
+          dispatch({
+            type: AppActionType.SET_IS_OPEN_MY_COLLECTION_PAGE,
+            payload: false,
+          });
+        }}
+      >
+        CryptoMural
+      </Logo>
       {!isConnect && (
         <Menubar onClick={connectWallet}>
           <a>Connect with ZilPay</a>
@@ -69,7 +81,16 @@ const Navbar = () => {
       )}
       {isConnect && (
         <Menubar>
-          <a>My Collection</a>
+          <a
+            onClick={() => {
+              dispatch({
+                type: AppActionType.SET_IS_OPEN_MY_COLLECTION_PAGE,
+                payload: true,
+              });
+            }}
+          >
+            My Collection
+          </a>
           <Address>
             {formatAddress(window.zilPay.wallet.defaultAccount.bech32)}
           </Address>

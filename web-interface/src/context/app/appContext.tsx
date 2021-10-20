@@ -5,9 +5,11 @@ import { AppAction, appReducer } from "./appReducer";
 
 export interface AppContextState {
   isMintSuccess: boolean;
+  isOpenMyCollectionPage: boolean;
 }
 const initialState: AppContextState = {
   isMintSuccess: false,
+  isOpenMyCollectionPage: false,
 };
 
 interface AppContextProviderProps {
