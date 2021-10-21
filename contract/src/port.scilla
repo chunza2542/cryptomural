@@ -351,7 +351,7 @@ procedure Minting(input_pair: Pair ByStr20 String)
     fst_string_bystr20 input_pair;
   token_uri = let snd_string_bystr20 = @snd ByStr20 String in
     snd_string_bystr20 input_pair;
-  IsMinter _sender;
+    
   (* Add to owner count *)
   UpdateTokenCount add_operation to;
   (* Add to total_supply *)
@@ -376,8 +376,7 @@ end
 (* @dev:    Mint new tokens. Only minters can mint.           *)
 (* @param:  to        - Address of the token recipient        *)
 (* @param:  token_uri - URI of the the new token to be minted *)
-transition Mint(token_uri: String)
-  to = _sender;
+transition Mint(to: ByStr20, token_uri: String)
   input_pair = build_pair to token_uri;
   Minting input_pair;
   token_id <- token_id_count;
