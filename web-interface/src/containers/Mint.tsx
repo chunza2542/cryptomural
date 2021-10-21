@@ -17,6 +17,7 @@ const ContractAddress = "0xed54ee4fc27fcafb038c76c010950d72f3bc2ed1";
 const Mint = () => {
   const [isConnect, setIsConnect] = useState(false);
   const [currentBalance, setCurrentBalance] = useState(0);
+  const [isLoading, setLoading] = useState(false);
   const { dispatch } = useAppContext();
 
   useEffect(() => {
@@ -65,6 +66,7 @@ const Mint = () => {
                   type: AppActionType.SET_IS_MINT_SUCCESS,
                   payload: true,
                 });
+                setLoading(false);
               }
             }
           });
@@ -101,6 +103,8 @@ const Mint = () => {
         gasLimit: window.zilPay.utils.Long.fromNumber(10000),
       }
     );
+
+    setLoading(true);
   };
 
   return (
@@ -127,7 +131,12 @@ const Mint = () => {
 
           {window.zilPay?.wallet?.net === "testnet" && (
             <>
-              <LinkButton onClick={mint}>Mint Your CryptoMural NFT</LinkButton>
+              {!isLoading && (
+                <LinkButton onClick={mint}>
+                  Mint Your CryptoMural NFT
+                </LinkButton>
+              )}
+              {isLoading && <DisabledButton>Minting...</DisabledButton>}
               <div>
                 Your Balance: {currentBalance.toFixed(2)} ZIL, Estimated Mint
                 Gas: ~2 ZIL
