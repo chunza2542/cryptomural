@@ -10,7 +10,15 @@ import * as IPFS from "ipfs-core";
 
 let ipfs: any;
 (async () => {
-  ipfs = await IPFS.create();
+  ipfs = await IPFS.create({
+    config: {
+      API: {
+        HTTPHeaders: {
+          "Access-Control-Allow-Origin": ["*"]
+        }
+      }
+    }
+  });
 })();
 
 const Container = styled.div`
@@ -62,9 +70,19 @@ const Mint = () => {
       subscriber.emitter.on(MessageType.EVENT_LOG, (event: any) => {
         const e = ((event?.value || [])[0] || { event_logs: [{}] })
           .event_logs[0];
-
+        console.log("DEBUG : ");
+        console.log(event);
+        
+        
         if (e._eventname === "MintSuccess") {
           e.params.forEach((param: any) => {
+            if (param.vname === "token_id") {
+              dispatch({
+                type: AppActionType.SET_TOKEN_ID,
+                payload: param.value,
+              });
+            }
+            
             if (param.vname === "by") {
               const walletAddress =
                 window?.zilPay?.wallet?.defaultAccount.base16;

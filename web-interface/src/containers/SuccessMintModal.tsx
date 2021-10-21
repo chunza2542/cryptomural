@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { OutlinedButton } from "../common/buttons";
 import { useAppContext } from "../context/app/appContext";
 import { AppActionType } from "../context/app/appReducer";
+import DownloadButton from "../common/DownloadButton";
 
 const ModalStyle = {
   overlay: {
@@ -103,9 +104,9 @@ const SuccessMintModal = () => {
           </Padding>
           <img src={state.imageURL} />
           <ButtonGroup>
-            <OutlinedButton>View on Explorer</OutlinedButton>
-            <OutlinedButton>Download</OutlinedButton>
-            <OutlinedButton>Share on Twitter</OutlinedButton>
+            <OutlinedButton><a href={`https://viewblock.io/zilliqa/address/0xed54ee4fc27fcafb038c76c010950d72f3bc2ed1?txsType=nft&specific=${state.tokenId}&network=testnet`} target="_blank">View on Exploror</a></OutlinedButton>
+            <OutlinedButton><DownloadButton url={state.imageURL}></DownloadButton></OutlinedButton>
+            <OutlinedButton><a href={`https://twitter.com/intent/tweet?text="hello world"`} target="_blank">Share on Twitter</a></OutlinedButton>
           </ButtonGroup>
         </Container>
       </Modal>

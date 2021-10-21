@@ -5,11 +5,13 @@ export interface AppContextState {
   isMintSuccess: boolean;
   isOpenMyCollectionPage: boolean;
   imageURL: string;
+  tokenId: string;
 }
 const initialState: AppContextState = {
   isMintSuccess: false,
   isOpenMyCollectionPage: false,
   imageURL: "",
+  tokenId: "",
 };
 
 interface AppContextProviderProps {

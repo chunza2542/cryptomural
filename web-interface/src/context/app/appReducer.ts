@@ -4,6 +4,7 @@ export enum AppActionType {
   SET_IS_MINT_SUCCESS = "SET_IS_MINT_SUCCESS",
   SET_IS_OPEN_MY_COLLECTION_PAGE = "SET_IS_OPEN_MY_COLLECTION_PAGE",
   SET_IMAGE_URL = "SET_IMAGE_URL",
+  SET_TOKEN_ID = "SET_TOKEN_ID"
 }
 
 export type AppAction =
@@ -18,7 +19,11 @@ export type AppAction =
   | {
       type: AppActionType.SET_IMAGE_URL;
       payload: string;
-    };
+    }
+  | {
+    type: AppActionType.SET_TOKEN_ID;
+    payload: string;
+  };
 
 export const appReducer = (
   state: AppContextState,
@@ -33,6 +38,9 @@ export const appReducer = (
     }
     case AppActionType.SET_IMAGE_URL: {
       return { ...state, imageURL: action.payload };
+    }
+    case AppActionType.SET_TOKEN_ID: {
+      return { ...state, tokenId: action.payload };
     }
   }
 };
