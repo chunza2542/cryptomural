@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ipfs-core": "^0.11.1"
+  }
+}

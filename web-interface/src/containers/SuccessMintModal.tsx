@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { OutlinedButton } from "../common/buttons";
 import { useAppContext } from "../context/app/appContext";
 import { AppActionType } from "../context/app/appReducer";
-import { colors, darkBlueTemplate, withOpacity } from "../utils/styled";
 
 const ModalStyle = {
   overlay: {
@@ -52,6 +51,11 @@ const Container = styled.div`
     margin: 0;
     margin-bottom: 36px;
   }
+  & img {
+    width: 100%;
+    height: 200px;
+    background: black;
+  }
 `;
 const Padding = styled.div`
   padding: 0 12px;
@@ -73,6 +77,10 @@ const SuccessMintModal = () => {
       type: AppActionType.SET_IS_MINT_SUCCESS,
       payload: false,
     });
+    dispatch({
+      type: AppActionType.SET_IMAGE_URL,
+      payload: "",
+    });
   };
 
   return (
@@ -93,7 +101,7 @@ const SuccessMintModal = () => {
             <h2>Successfully Mint!</h2>
             <p>You successfully mint your CryptoMural NFT!!</p>
           </Padding>
-          <img src="https://pbs.twimg.com/profile_banners/734228556910186498/1627112708/600x200" />
+          <img src={state.imageURL} />
           <ButtonGroup>
             <OutlinedButton>View on Explorer</OutlinedButton>
             <OutlinedButton>Download</OutlinedButton>

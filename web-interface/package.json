@@ -40,7 +40,7 @@
     "d3": "^7.0.0",
     "ethers": "^5.4.7",
     "fuse.js": "^6.4.6",
-    "html-element-to-image": "^2.1.1",
+    "ipfs-core": "^0.11.1",
     "js-search": "^2.0.0",
     "react": "^17.0.2",
     "react-copy-to-clipboard": "^5.0.3",
