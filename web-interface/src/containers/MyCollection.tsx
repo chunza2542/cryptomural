@@ -37,6 +37,7 @@ const Item = styled.div`
 
 const MyCollection = () => {
   const [tokenList, setTokenList] = useState<any[]>([])
+  const [downloading, setDownloading] = useState<boolean>(true)
 
   useEffect(() => {
     (async () => {
@@ -56,12 +57,14 @@ const MyCollection = () => {
 
       console.log(list);
       setTokenList(list)
+      setDownloading(false)
     })()
   },[])
 
   return (
     <Container>
-      {tokenList.length === 0 && <Heading style={{textAlign: "center"}}>Your Collection is Empty.</Heading>}
+      {!downloading && tokenList.length === 0 && <Heading style={{textAlign: "center"}}>Your Collection is Empty.</Heading>}
+      {downloading && <Heading style={{textAlign: "center"}}>Downloading ...</Heading>}
       {
         tokenList.map(([url, key])=>{
           const text = encodeURIComponent("Hello, this is my nft - " + url)
