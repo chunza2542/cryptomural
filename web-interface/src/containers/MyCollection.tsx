@@ -59,32 +59,6 @@ const MyCollection = () => {
     })()
   },[])
 
-  const onDownload = (url:string) => async (e:any) => {
-    const c = document.createElement("canvas");
-    c.setAttribute("width", "3000px")
-    c.setAttribute("height", "1000px")
-    const ctx:any = c.getContext("2d")
-
-    const i:any = document.createElement("img");
-    i.setAttribute("src", url)
-    i.setAttribute("width", "3000px")
-    i.setAttribute("height", "1000px")
-
-    i.crossOrigin = "anonymous"
-    
-    i.onload = () => {
-      ctx.drawImage(i, 10, 10)
-
-      console.log(c.toDataURL("image/png"));
-      c.remove()
-      i.remove()
-    }
-
-    i.onerror = () => {
-      c.remove()
-      i.remove()
-    }
-  }
   return (
     <Container>
       {tokenList.length === 0 && <Heading style={{textAlign: "center"}}>Your Collection is Empty.</Heading>}
@@ -95,7 +69,7 @@ const MyCollection = () => {
             <img src={url}/>
             <div >
               <a href={`https://viewblock.io/zilliqa/address/0xed54ee4fc27fcafb038c76c010950d72f3bc2ed1?txsType=nft&specific=${key}&network=testnet`} target="_blank">View on Exploror</a>
-              <span onClick={onDownload(url)} style={{"cursor": "pointer"}}>Download</span>
+              <a href={url} download>Download</a>
               <a href={`https://twitter.com/intent/tweet?text=${text}`} target="_blank">Share on Twitter</a>
             </div>
           </Item>
