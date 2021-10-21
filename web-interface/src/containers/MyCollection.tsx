@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import nodeToDataURL from 'html-element-to-image'
 
 const Container = styled.div`
   margin-top: 36px;
@@ -58,15 +59,31 @@ const MyCollection = () => {
     })()
   },[])
 
-  const onDownload = (url:string) => async () => {
-    const blob = await fetch("https://cors-anywhere.herokuapp.com/"+url).then(res => res.blob())
-    const newUrl = URL.createObjectURL(blob);
+  const onDownload = (url:string) => async (e:any) => {
+    const c = document.createElement("canvas");
+    c.setAttribute("width", "3000px")
+    c.setAttribute("height", "1000px")
+    const ctx:any = c.getContext("2d")
 
-    const a = document.createElement("a");
-    a.setAttribute("href", newUrl)
-    a.setAttribute("download", "test.jpg")
-    a.click()
-    a.remove()
+    const i:any = document.createElement("img");
+    i.setAttribute("src", url)
+    i.setAttribute("width", "3000px")
+    i.setAttribute("height", "1000px")
+
+    i.crossOrigin = "anonymous"
+    
+    i.onload = () => {
+      ctx.drawImage(i, 10, 10)
+
+      console.log(c.toDataURL("image/png"));
+      c.remove()
+      i.remove()
+    }
+
+    i.onerror = () => {
+      c.remove()
+      i.remove()
+    }
   }
   return (
     <Container>
@@ -74,9 +91,9 @@ const MyCollection = () => {
       {
         tokenList.map(([url, key])=>{
           const text = encodeURIComponent("Hello, this is my nft - " + url)
-          return <Item key={key}>
-            <img src={url} />
-            <div>
+          return <Item key={key} id="ice">
+            <img src={url}/>
+            <div >
               <a href={`https://viewblock.io/zilliqa/address/0xed54ee4fc27fcafb038c76c010950d72f3bc2ed1?txsType=nft&specific=${key}&network=testnet`} target="_blank">View on Exploror</a>
               <span onClick={onDownload(url)} style={{"cursor": "pointer"}}>Download</span>
               <a href={`https://twitter.com/intent/tweet?text=${text}`} target="_blank">Share on Twitter</a>
