@@ -5,6 +5,13 @@ import { useAppContext } from "../context/app/appContext";
 import { AppActionType } from "../context/app/appReducer";
 import { Zilliqa } from "@zilliqa-js/zilliqa";
 import { StatusType, MessageType } from "@zilliqa-js/subscriptions";
+import { generate } from "../utils/generator";
+import * as IPFS from "ipfs-core";
+
+let ipfs: any;
+(async () => {
+  ipfs = await IPFS.create();
+})();
 
 const Container = styled.div`
   margin-top: 36px;
@@ -69,6 +76,12 @@ const Mint = () => {
                 setLoading(false);
               }
             }
+            if (param.vname === "token_uri") {
+              dispatch({
+                type: AppActionType.SET_IMAGE_URL,
+                payload: param.value,
+              });
+            }
           });
         }
       });
@@ -84,6 +97,10 @@ const Mint = () => {
       window.zilPay.utils.units.Units.Li
     );
 
+    const imageData = generate();
+    const { cid } = await ipfs.add(imageData);
+    const imageUrl = `https://ipfs.io/ipfs/${cid.toString()}`;
+
     await CryptoMuralContract.call(
       "Mint",
       [
@@ -95,7 +112,7 @@ const Mint = () => {
         {
           vname: "token_uri",
           type: "String",
-          value: "https://thechun.dev",
+          value: imageUrl,
         },
       ],
       {

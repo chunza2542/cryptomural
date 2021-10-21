@@ -1,15 +1,15 @@
 import React from "react";
-import { SelectedChain, SelectedToken } from "../../types/transferWidget";
-import { WalletInfo } from "../../types/wallet";
 import { AppAction, appReducer } from "./appReducer";
 
 export interface AppContextState {
   isMintSuccess: boolean;
   isOpenMyCollectionPage: boolean;
+  imageURL: string;
 }
 const initialState: AppContextState = {
   isMintSuccess: false,
   isOpenMyCollectionPage: false,
+  imageURL: "",
 };
 
 interface AppContextProviderProps {

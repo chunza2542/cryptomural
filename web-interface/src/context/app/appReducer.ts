@@ -3,6 +3,7 @@ import { AppContextState } from "./appContext";
 export enum AppActionType {
   SET_IS_MINT_SUCCESS = "SET_IS_MINT_SUCCESS",
   SET_IS_OPEN_MY_COLLECTION_PAGE = "SET_IS_OPEN_MY_COLLECTION_PAGE",
+  SET_IMAGE_URL = "SET_IMAGE_URL",
 }
 
 export type AppAction =
@@ -13,6 +14,10 @@ export type AppAction =
   | {
       type: AppActionType.SET_IS_OPEN_MY_COLLECTION_PAGE;
       payload: boolean;
+    }
+  | {
+      type: AppActionType.SET_IMAGE_URL;
+      payload: string;
     };
 
 export const appReducer = (
@@ -25,6 +30,9 @@ export const appReducer = (
     }
     case AppActionType.SET_IS_OPEN_MY_COLLECTION_PAGE: {
       return { ...state, isOpenMyCollectionPage: action.payload };
+    }
+    case AppActionType.SET_IMAGE_URL: {
+      return { ...state, imageURL: action.payload };
     }
   }
 };

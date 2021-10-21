@@ -52,6 +52,9 @@ const Container = styled.div`
     margin: 0;
     margin-bottom: 36px;
   }
+  & img {
+    width: 100%;
+  }
 `;
 const Padding = styled.div`
   padding: 0 12px;
@@ -93,7 +96,7 @@ const SuccessMintModal = () => {
             <h2>Successfully Mint!</h2>
             <p>You successfully mint your CryptoMural NFT!!</p>
           </Padding>
-          <img src="https://pbs.twimg.com/profile_banners/734228556910186498/1627112708/600x200" />
+          <img src={state.imageURL} />
           <ButtonGroup>
             <OutlinedButton>View on Explorer</OutlinedButton>
             <OutlinedButton>Download</OutlinedButton>
