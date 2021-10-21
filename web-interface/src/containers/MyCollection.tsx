@@ -59,7 +59,7 @@ const MyCollection = () => {
   },[])
 
   const onDownload = (url:string) => async () => {
-    const blob = await fetch(url).then(res => res.blob())
+    const blob = await fetch("https://cors-anywhere.herokuapp.com/"+url).then(res => res.blob())
     const newUrl = URL.createObjectURL(blob);
 
     const a = document.createElement("a");
