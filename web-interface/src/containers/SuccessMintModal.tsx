@@ -54,6 +54,8 @@ const Container = styled.div`
   }
   & img {
     width: 100%;
+    height: 200px;
+    background: black;
   }
 `;
 const Padding = styled.div`
@@ -75,6 +77,10 @@ const SuccessMintModal = () => {
     dispatch({
       type: AppActionType.SET_IS_MINT_SUCCESS,
       payload: false,
+    });
+    dispatch({
+      type: AppActionType.SET_IMAGE_URL,
+      payload: "",
     });
   };
 
