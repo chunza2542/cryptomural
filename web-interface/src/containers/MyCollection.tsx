@@ -65,7 +65,7 @@ const MyCollection = () => {
   return (
     <Container>
       {!downloading && tokenList.length === 0 && <Heading style={{textAlign: "center"}}>Your Collection is Empty.</Heading>}
-      {downloading && <Heading style={{textAlign: "center"}}>Downloading ...</Heading>}
+      {downloading && <Heading style={{textAlign: "center"}}>Downloading <i className="fas fa-circle-notch fa-spin"></i></Heading>}
       {
         tokenList.map(([url, key])=>{
           const text = encodeURIComponent("Hello, this is my nft - " + url)

@@ -172,7 +172,7 @@ const Mint = () => {
                   Mint Your CryptoMural NFT
                 </LinkButton>
               )}
-              {isLoading && <DisabledButton>Minting...</DisabledButton>}
+              {isLoading && <DisabledButton>Minting <i className="fas fa-circle-notch fa-spin"></i></DisabledButton>}
               <div>
                 Your Balance: {currentBalance.toFixed(2)} ZIL, Estimated Mint
                 Gas: ~2 ZIL
