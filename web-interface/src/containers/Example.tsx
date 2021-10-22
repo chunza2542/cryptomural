@@ -26,6 +26,7 @@ const ProfilePicture = styled.img`
   border: 5px solid rgb(40, 40, 40);
   transform: translateX(16px);
   margin-top: calc(-145px / 2);
+  background: #dfdfdf;
 `;
 const FollowButton = styled.div`
   background: white;
@@ -50,13 +51,13 @@ const Example = () => {
     setInterval(() => {
       const index = Math.floor(Math.random() * example.length);
       setImage(encodeSVGtoURL(example[index]));
-    }, 2000);
+    }, 3000);
   }, []);
 
   return (
     <Container>
       <HeaderPicture src={image} />
-      <ProfilePicture src="https://www.larvalabs.com/cryptopunks/cryptopunk4557.png" />
+      <ProfilePicture src="https://pbs.twimg.com/media/FBI4YrvWUAIBAv2.png" />
       <FollowButton>Follow</FollowButton>
     </Container>
   );
