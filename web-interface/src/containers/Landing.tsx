@@ -35,9 +35,9 @@ const Landing = () => {
         algorithm.
       </p>
       <LinkContainer>
-        <a>Mintable</a>
-        <a>Contract</a>
-        <a>Twitter</a>
+        <a href="https://github.com/chunza2542/cryptomural" target="_blank">Github</a>
+        <a href="https://viewblock.io/zilliqa/address/zil1l975dvkygx584fl0kxadqsz5y3xqeur0qhxyz4?network=testnet&tab=code" target="_blank">Contract</a>
+        <a href="https://twitter.com/chunza2542" target="_blank">Twitter</a>
       </LinkContainer>
       <Example />
     </Container>
