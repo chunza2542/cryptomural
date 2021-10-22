@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import DownloadButton from "../common/DownloadButton";
 import { useState, useEffect } from "react";
+import CONTRACT from "../constants/Contract";
 
 const Container = styled.div`
   margin-top: 36px;
@@ -42,7 +43,7 @@ const MyCollection = () => {
   useEffect(() => {
     (async () => {
       const addr = window.zilPay.wallet.defaultAccount.base16
-      const contract = window.zilPay.contracts.at("0xed54ee4fc27fcafb038c76c010950d72f3bc2ed1")
+      const contract = window.zilPay.contracts.at(CONTRACT.address)
       const data = await contract.getState()
       const {token_owners, token_uris} = data
       console.log(data);
@@ -71,7 +72,7 @@ const MyCollection = () => {
           return <Item key={key} id="ice">
             <img src={url}/>
             <div >
-              <a href={`https://viewblock.io/zilliqa/address/0xed54ee4fc27fcafb038c76c010950d72f3bc2ed1?txsType=nft&specific=${key}&network=testnet`} target="_blank">View on Exploror</a>
+              <a href={`https://viewblock.io/zilliqa/address/${CONTRACT.address}?txsType=nft&specific=${key}&network=testnet`} target="_blank">View on Exploror</a>
               {/* <span onClick={onDownload(url)} style={{"cursor": "pointer"}}>Download</span> */}
               <DownloadButton url={url}></DownloadButton>
               <a href={`https://twitter.com/intent/tweet?text=${text}`} target="_blank">Share on Twitter</a>

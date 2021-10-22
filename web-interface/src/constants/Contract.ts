@@ -1,4 +1,5 @@
-export const BRIDGE: any = {
-  80001: "0x533d74323dea658087a9d5D00133d17891F12e8E",
-  1666700000: "0xf23Dc58ec64f163a0eFea6E84a3E6A8D8C9b6193",
+const CONTRACT: any = {
+  address: "0xc56f65b01329d05cc36518de8457e787568bb066",
 };
+
+export default CONTRACT

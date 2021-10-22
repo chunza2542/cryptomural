@@ -7,6 +7,7 @@ import { Zilliqa } from "@zilliqa-js/zilliqa";
 import { StatusType, MessageType } from "@zilliqa-js/subscriptions";
 import { generate } from "../utils/generator";
 import * as IPFS from "ipfs-core";
+import CONTRACT from "../constants/Contract"
 
 let ipfs: any;
 (async () => {
@@ -27,7 +28,7 @@ const Container = styled.div`
   text-align: center;
 `;
 
-const ContractAddress = "0xed54ee4fc27fcafb038c76c010950d72f3bc2ed1";
+const ContractAddress = CONTRACT.address;
 
 const Mint = () => {
   const [isConnect, setIsConnect] = useState(false);
@@ -82,7 +83,7 @@ const Mint = () => {
                 payload: param.value,
               });
             }
-            
+
             if (param.vname === "by") {
               const walletAddress =
                 window?.zilPay?.wallet?.defaultAccount.base16;
