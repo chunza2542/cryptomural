@@ -6,6 +6,7 @@ import { useAppContext } from "../context/app/appContext";
 import { AppActionType } from "../context/app/appReducer";
 import DownloadButton from "../common/DownloadButton";
 import CONTRACT from "../constants/Contract";
+import Image from "../common/Image";
 
 const ModalStyle = {
   overlay: {
@@ -103,7 +104,7 @@ const SuccessMintModal = () => {
             <h2>Successfully Mint!</h2>
             <p>You successfully mint your CryptoMural NFT!!</p>
           </Padding>
-          <img src={state.imageURL} />
+          <Image url={state.imageURL}/>
           <ButtonGroup>
             <OutlinedButton><a href={`https://viewblock.io/zilliqa/address/${CONTRACT.address}?txsType=nft&specific=${state.tokenId}&network=testnet`} target="_blank">View on Exploror</a></OutlinedButton>
             <OutlinedButton><DownloadButton url={state.imageURL}></DownloadButton></OutlinedButton>

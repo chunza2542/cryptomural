@@ -18,9 +18,8 @@ const DownloadButton = ({url}:any) => {
         
         i.onload = () => {
             ctx.drawImage(i, 0, 0, 3000, 1000)
-            url = c.toDataURL("image/png")
-            const a = document.createElement("a");
-            setUrl(url)
+            const newUrl = c.toDataURL("image/png")
+            setUrl(newUrl)
             c.remove()
             i.remove()
         }
@@ -29,7 +28,7 @@ const DownloadButton = ({url}:any) => {
             c.remove()
             i.remove()
         }
-    }, [])
+    }, [url])
 
     return <a href={imageUrl} download>Download</a>
 }

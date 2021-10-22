@@ -13,7 +13,6 @@ import Mint from "./containers/Mint";
 import SuccessMintModal from "./containers/SuccessMintModal";
 import { useAppContext } from "./context/app/appContext";
 import MyCollection from "./containers/MyCollection";
-import { Contract } from "@ethersproject/contracts";
 
 const BodyContainer = styled.div`
   width: 600px;

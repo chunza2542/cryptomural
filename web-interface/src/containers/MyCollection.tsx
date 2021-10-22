@@ -2,6 +2,7 @@ import styled from "styled-components";
 import DownloadButton from "../common/DownloadButton";
 import { useState, useEffect } from "react";
 import CONTRACT from "../constants/Contract";
+import Image from "../common/Image";
 
 const Container = styled.div`
   margin-top: 36px;
@@ -19,6 +20,7 @@ const Item = styled.div`
   border: 1px solid #ccc;
   border-radius: 7px;
   margin-bottom: 24px;
+  overflow: hidden;
 
   & img {
     width: 100%;
@@ -26,7 +28,7 @@ const Item = styled.div`
   & > div {
     padding: 12px;
     text-align: right;
-    & * {
+    & a {
       color: white;
       margin-left: 12px;
       x &:hover {
@@ -69,8 +71,8 @@ const MyCollection = () => {
       {
         tokenList.map(([url, key])=>{
           const text = encodeURIComponent("Hello, this is my nft - " + url)
-          return <Item key={key} id="ice">
-            <img src={url}/>
+          return <Item key={key}>
+            <Image url={url}/>
             <div >
               <a href={`https://viewblock.io/zilliqa/address/${CONTRACT.address}?txsType=nft&specific=${key}&network=testnet`} target="_blank">View on Exploror</a>
               {/* <span onClick={onDownload(url)} style={{"cursor": "pointer"}}>Download</span> */}
