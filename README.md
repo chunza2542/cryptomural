@@ -8,11 +8,11 @@
 
 CryptoMural is an NFT generative art for your Twitter header using Flow Field pathfinding algorithm on Zilliqa blockchain.
 
-[Try it by yourseft](https://cryptomural.web.app/) |  [Report a bug, request a feature or provide a feedback](https://github.com/chunza2542/cryptomural/issues)
+[Try it yourself](https://cryptomural.web.app/) |  [Report a bug, request a feature or provide a feedback](https://github.com/chunza2542/cryptomural/issues)
 
-## Demo
+## Demo Video
 
-<iframe width="560px" height="315px" style="border-radius: 10px;" src="https://www.youtube.com/embed/TYfHlT0xnaE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Demo Video](https://yt-embed.herokuapp.com/embed?v=TYfHlT0xnaE)](https://www.youtube.com/watch?v=TYfHlT0xnaE "Demo Video")
 
 ## How it works
 
@@ -22,19 +22,22 @@ In this project, when user generate thier token, Javascript on browser will gene
 
 <img src="./mint.png" width="500px"/>
 
-### Gallery exhibition
+### Gallery exhibition (My Collection Page)
 
 In this section, we use `@zilliqa-js/zilliqa` module to retrieve the contract state. We filter all token url with user's address from ZillPay wallet and then show it on screen.
 
 ## Roadmap
 
-- [x] Develop the MVP.
-- [x] Launch on test net for getting the feedback.
-- [ ] Add more shape and color.
-- [ ] Create community on twitter.
-- [ ] Lauch on main net.
-- [ ] Develop the market place.
-- [ ] Build community tools such as Changing header from our website etc.
+- [x] Develop the MVP
+- [x] Launch on Zilliqa Testnet (+ gather feedback)
+- [ ] Add more shapes and colors
+- [ ] Create the community on Twitter
+- [ ] Launch on Zilliqa Mainnet
+- [ ] Launch a community project
+  - E.g. art collaboration contest, CryptoMural giveaway 
+- [ ] Develop and launch more features
+  - E.g. login with Twitter and change the header directly on our site, our own marketplace, etc..
+- [ ] Scale our project to other chains
 
 ---
 
