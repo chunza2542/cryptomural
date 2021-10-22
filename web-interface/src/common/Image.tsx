@@ -9,6 +9,7 @@ const Loading = styled.div`
     top: 0px;
     left: 0px;
     > i {
+        color: white;
         position: absolute;
         top: 50%;
         left: 50%;
