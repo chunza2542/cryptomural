@@ -19,7 +19,9 @@ export const OutlinedButton = styled(ButtonStyle)`
   background: transparent;
   border: 1px solid black;
   padding: 6px 12px;
-
+  & a {
+    color: black;
+  }
   &:hover {
     text-decoration: underline;
   }

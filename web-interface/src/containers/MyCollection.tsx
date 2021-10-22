@@ -31,8 +31,8 @@ const Item = styled.div`
     & a {
       color: white;
       margin-left: 12px;
-      x &:hover {
-        text-decoration: underline;
+      &:hover {
+        text-decoration: underline !important;
       }
     }
   }
@@ -73,7 +73,7 @@ const MyCollection = () => {
           const text = encodeURIComponent("Hello, this is my nft - " + url)
           return <Item key={key}>
             <Image url={url}/>
-            <div >
+            <div>
               <a href={`https://viewblock.io/zilliqa/address/${CONTRACT.address}?txsType=nft&specific=${key}&network=testnet`} target="_blank">View on Exploror</a>
               {/* <span onClick={onDownload(url)} style={{"cursor": "pointer"}}>Download</span> */}
               <DownloadButton url={url}></DownloadButton>
