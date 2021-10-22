@@ -14,10 +14,10 @@ let ipfs: any;
     config: {
       API: {
         HTTPHeaders: {
-          "Access-Control-Allow-Origin": ["*"]
-        }
-      }
-    }
+          "Access-Control-Allow-Origin": ["*"],
+        },
+      },
+    },
   });
 })();
 
@@ -72,8 +72,7 @@ const Mint = () => {
           .event_logs[0];
         console.log("DEBUG : ");
         console.log(event);
-        
-        
+
         if (e._eventname === "MintSuccess") {
           e.params.forEach((param: any) => {
             if (param.vname === "token_id") {
@@ -82,7 +81,7 @@ const Mint = () => {
                 payload: param.value,
               });
             }
-            
+
             if (param.vname === "by") {
               const walletAddress =
                 window?.zilPay?.wallet?.defaultAccount.base16;

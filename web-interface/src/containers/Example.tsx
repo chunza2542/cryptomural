@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+import { encodeSVGtoURL } from "../utils/generator";
+import example from "../datasources/example";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -14,6 +17,8 @@ const Container = styled.div`
 `;
 const HeaderPicture = styled.img`
   width: 100%;
+  height: 200px;
+  background: black;
 `;
 const ProfilePicture = styled.img`
   width: 145px;
@@ -39,10 +44,19 @@ const FollowButton = styled.div`
 `;
 
 const Example = () => {
+  const [image, setImage] = useState(encodeSVGtoURL(example[0]));
+
+  useEffect(() => {
+    setInterval(() => {
+      const index = Math.floor(Math.random() * example.length);
+      setImage(encodeSVGtoURL(example[index]));
+    }, 2000);
+  }, []);
+
   return (
     <Container>
-      <HeaderPicture src="https://pbs.twimg.com/profile_banners/734228556910186498/1627112708/600x200" />
-      <ProfilePicture src="https://pbs.twimg.com/profile_images/1431786039555682312/e65h-F_W_200x200.jpg" />
+      <HeaderPicture src={image} />
+      <ProfilePicture src="https://www.larvalabs.com/cryptopunks/cryptopunk4557.png" />
       <FollowButton>Follow</FollowButton>
     </Container>
   );
