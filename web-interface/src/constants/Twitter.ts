@@ -1,8 +1,7 @@
 const TWITTER: any = {
     share: {
-        text: "",
-        hashtag: "",
-        website: ""
+        hashtags: ["#CryptoMural", "#NFT", "#Zilliqa"],
+        website: "cryptomural.web.app"
     },
 };
   

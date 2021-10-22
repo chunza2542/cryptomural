@@ -3,6 +3,7 @@ import DownloadButton from "../common/DownloadButton";
 import { useState, useEffect } from "react";
 import CONTRACT from "../constants/Contract";
 import Image from "../common/Image";
+import TwitterShareButton from "../common/TwitterShareButton";
 
 const Container = styled.div`
   margin-top: 36px;
@@ -70,14 +71,13 @@ const MyCollection = () => {
       {downloading && <Heading style={{textAlign: "center"}}>Downloading... <i style={{fontSize: '16px'}} className="fas fa-circle-notch fa-spin"></i></Heading>}
       {
         tokenList.map(([url, key])=>{
-          const text = encodeURIComponent("Hello, this is my nft - " + url)
           return <Item key={key}>
             <Image url={url}/>
             <div>
               <a href={`https://viewblock.io/zilliqa/address/${CONTRACT.address}?txsType=nft&specific=${key}&network=testnet`} target="_blank">View on Exploror</a>
-              {/* <span onClick={onDownload(url)} style={{"cursor": "pointer"}}>Download</span> */}
               <DownloadButton url={url}></DownloadButton>
-              <a href={`https://twitter.com/intent/tweet?text=${text}`} target="_blank">Share on Twitter</a>
+              <TwitterShareButton url={url} key={key}/>
+              {/* <a href={`https://twitter.com/intent/tweet?text=${text}`} target="_blank">Share on Twitter</a> */}
             </div>
           </Item>
        }

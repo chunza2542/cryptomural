@@ -7,6 +7,7 @@ import { AppActionType } from "../context/app/appReducer";
 import DownloadButton from "../common/DownloadButton";
 import CONTRACT from "../constants/Contract";
 import Image from "../common/Image";
+import TwitterShareButton from "../common/TwitterShareButton";
 
 const ModalStyle = {
   overlay: {
@@ -108,7 +109,8 @@ const SuccessMintModal = () => {
           <ButtonGroup>
             <OutlinedButton><a href={`https://viewblock.io/zilliqa/address/${CONTRACT.address}?txsType=nft&specific=${state.tokenId}&network=testnet`} target="_blank">View on Exploror</a></OutlinedButton>
             <OutlinedButton><DownloadButton url={state.imageURL}></DownloadButton></OutlinedButton>
-            <OutlinedButton><a href={`https://twitter.com/intent/tweet?text="hello world"`} target="_blank">Share on Twitter</a></OutlinedButton>
+            <OutlinedButton><TwitterShareButton url={state.imageURL} key={state.tokenId}/></OutlinedButton>
+              {/* <a href={`https://twitter.com/intent/tweet?text="hello world"`} target="_blank">Share on Twitter</a> */}
           </ButtonGroup>
         </Container>
       </Modal>
