@@ -152,3 +152,11 @@ function _generate(method) {
 }
 
 export const generate = () => _generate(randInt(0, 5));
+
+export function encodeSVGtoURL(data) {
+  const symbols = /[\r\n%#()<>?[\\\]^`{|}]/g;
+  data = data.replace(/"/g, `'`);
+  data = data.replace(/>\s{1,}</g, `><`);
+  data = data.replace(/\s{2,}/g, ` `);
+  return "data:image/svg+xml," + data.replace(symbols, encodeURIComponent);
+}
